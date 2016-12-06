@@ -1,11 +1,3 @@
 #!/bin/bash
-ipaddress=`ifconfig en0 | grep 'inet \d.'`
-ipaddress=${ipaddress#*inet }
-ipaddress=${ipaddress% netmask*}
-echo $ipaddress
 
-
-
-
-
-
+ifconfig en0 | awk '{if(NR==4){print $2}}'
